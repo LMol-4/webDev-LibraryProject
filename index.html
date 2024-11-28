@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Luke's Library</title>
+      <link rel="stylesheet" href="css/sign-in.css">
+   </head>
+   <body>
+      <div class="wrapper">
+         <div class="title">
+            Luke's Library
+         </div>
+         <!-- Login form -->
+         <form action="scripts/login.php" method="post">
+            <div class="field">
+               <input type="text" name="username" required>
+               <label>Username</label>
+            </div>
+            <div class="field">
+               <input type="password" name="password" required>
+               <label>Password</label>
+            </div>
+            <div class="field">
+               <input type="submit" value="Login">
+            </div>
+            <div class="error_message" style="padding: 10px;"></div>
+            <div class="signup-link">
+               Not a member? <a href="html/registration.html">Register now</a>
+            </div>
+         </form>
+      </div>
+   </body>
+   <!-- Javascript just used to display the error message efficiently, and in the same style of the page. -->
+   <script type="text/javascript">
+      // Check if the URL contains the 'duplicate=true' query string
+      if (window.location.search.indexOf('wrong=true') !== -1) {
+          // Create and append the duplicate message
+          var duplicateMessage = document.createElement('div');
+          duplicateMessage.classList.add('bad-login');
+          duplicateMessage.textContent = 'The details entered are incorrect.';
+          document.body.insertBefore(duplicateMessage, document.body.firstChild);
+          var inputlocation = document.querySelector('.error_message');
+          inputlocation.appendChild(duplicateMessage);
+      }
+    </script>
+</html>

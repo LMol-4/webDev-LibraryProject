@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/registration.css">
+    <title>Registration - Luke's Library</title>
+</head>
+<body>
+  <div class="container">
+    <!-- Title section -->
+    <div class="title">Registration</div>
+    <div class="content">
+      <!-- Registration form -->
+      <form action="../scripts/register_user.php" method="POST">
+        <div class="user-details">
+            <!-- Input for Username -->
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" placeholder="Enter your username" name="username" required>
+          </div>
+            <!-- Input for Password -->
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter a 6 character password" name="password" required>
+          </div>
+          <!-- Input for First Name -->
+          <div class="input-box">
+            <span class="details">First Name</span>
+            <input type="text" placeholder="Enter your first name" name="first_name" required>
+          </div>
+          <!-- Input for Surname -->
+          <div class="input-box">
+            <span class="details">Surname</span>
+            <input type="text" placeholder="Enter your surname" name="surname" required>
+          </div>
+          <!-- Input for Address 1 -->
+          <div class="input-box">
+            <span class="details">Address 1</span>
+            <input type="text" placeholder="Enter your address 1" name="address1" required>
+          </div>
+          <!-- Input for Address 2 -->
+          <div class="input-box">
+            <span class="details">Address 2</span>
+            <input type="text" placeholder="Enter your address 2" name="address2" required>
+          </div>
+          <!-- Input for City -->
+          <div class="input-box">
+            <span class="details">City</span>
+            <input type="text" placeholder="Enter your city" name="city" required>
+          </div>
+          <!-- Input for Telephone -->
+          <div class="input-box">
+            <span class="details">Telephone</span>
+            <input type="number" placeholder="Enter your telephone number" name="telephone" required>
+          </div>
+          <!-- Input for Mobile -->
+          <div class="input-box">
+            <span class="details">Mobile</span>
+            <input type="number" placeholder="Enter your mobile number" name="mobile" required>
+          </div>
+        </div>
+        <div class="error_message"></div>
+        <!-- Submit button -->
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+<!-- Javascript just used to display the error message efficiently, and in the same style of the page. -->
+<script type="text/javascript">
+  // Error messages and their corresponding query string parameters
+  const errorMessages = {
+    'duplicate': 'Username already exists.',
+    'mobile': 'Mobile must be 10 digits long.',
+    'password': 'Password must be 6 characters.',
+  };
+
+  // Function to check for query string parameter and display message
+  function checkAndDisplayError(errorMessage, queryStringParam) {
+    if (window.location.search.indexOf(queryStringParam) !== -1) {
+      const duplicateMessage = document.createElement('div');
+      duplicateMessage.classList.add('duplicate');
+      duplicateMessage.textContent = errorMessages[errorMessage];
+      document.body.insertBefore(duplicateMessage, document.body.firstChild);
+      const inputlocation = document.querySelector('.error_message');
+      inputlocation.appendChild(duplicateMessage);
+    }
+  }
+
+  // Call the function for each error message and its parameter
+  checkAndDisplayError('duplicate', 'duplicate=true');
+  checkAndDisplayError('mobile', 'mobile=true');
+  checkAndDisplayError('password', 'password=true');
+</script>
+</html>
